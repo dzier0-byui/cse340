@@ -143,12 +143,10 @@ h1 {
       flex-direction: row;
   }
   .reviews {
-    flex: 1;
     max-width: 45% !important;
   }
 
   .car-upgrades {
-    flex: 1;
     max-width: 45% !important;
   }
   
