@@ -1,0 +1,48 @@
+#inv-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+    gap: 1.5rem;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+    margin: 2rem 15px;
+  }
+  
+  #inv-display li {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #inv-display li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  #inv-display img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  #inv-display .namePrice {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  #inv-display h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  #inv-display span {
+    display: block;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
