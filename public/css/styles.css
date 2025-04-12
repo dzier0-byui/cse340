@@ -43,6 +43,15 @@ nav ul {
   height: 100%;
 }
 
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
