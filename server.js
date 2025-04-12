@@ -10,6 +10,7 @@ const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
+const errorRoute = require("./routes/errorRoute")
 const utilities = require("./utilities/")
 const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
@@ -27,6 +28,8 @@ app.set("layout", "./layouts/layout")
 app.use(static)
 // Inventory routes
 app.use("/inv", utilities.handleErrors(inventoryRoute))
+
+app.use("/error", utilities.handleErrors(errorRoute))
 
 //Index route
 // app.get("/", function(req, res){
