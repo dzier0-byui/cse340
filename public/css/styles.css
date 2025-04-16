@@ -142,6 +142,7 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+ 
 
 @media (min-width: 508px) {
   .car-info {

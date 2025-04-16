@@ -16,6 +16,8 @@ const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
 const session = require("express-session")
 const pool = require('./database/')
+const accountRoute = require("./routes/accountRoute")
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
@@ -38,6 +40,10 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -53,6 +59,8 @@ app.use(static)
 app.use("/inv", utilities.handleErrors(inventoryRoute))
 
 app.use("/error", utilities.handleErrors(errorRoute))
+
+app.use("/account", utilities.handleErrors(accountRoute))
 
 //Index route
 // app.get("/", function(req, res){
