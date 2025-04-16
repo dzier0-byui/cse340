@@ -1,4 +1,4 @@
-#loginForm, #registerForm {
+#loginForm, #registerForm, #classificationForm {
     width: 350px;
     margin: 100px auto;
     padding: 20px;
@@ -35,7 +35,7 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-#loginButton, #registerButton {
+#loginButton, #registerButton, #addButton {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -46,7 +46,7 @@ input[type="text"] {
     border-radius: 4px;
 }
 
-#loginButton:hover, #registerButton:hover {
+#loginButton:hover, #registerButton:hover, #addButton:hover {
     background-color: #0056b3;
 }
 
