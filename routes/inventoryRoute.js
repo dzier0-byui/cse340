@@ -18,6 +18,8 @@ router.get("/add-classification", utilities.handleErrors(invController.buildNewC
 
 router.get("/add-vehicle", utilities.handleErrors(invController.buildNewVehicle))
 
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
 router.post(
     "/classification",
     classificationValidate.classificationRules(),

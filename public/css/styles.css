@@ -147,7 +147,24 @@ h1 {
   list-style: none;
   text-align: left;
 }
- 
+
+
+/* Vehicle management */
+#classificationList {
+  max-width: 300px;
+}
+
+#inventoryDisplay{
+  margin: 10px auto;
+}
+
+#inventoryDisplay tbody {
+  text-align: left;
+}
+
+#inventoryDisplay td {
+  padding: 3px;
+}
 
 @media (min-width: 508px) {
   .car-info {
