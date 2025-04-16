@@ -1,4 +1,4 @@
-#loginForm, #registerForm, #classificationForm {
+#loginForm, #registerForm, #classificationForm, #vehicleForm {
     width: 350px;
     margin: 100px auto;
     padding: 20px;
@@ -29,7 +29,10 @@ label {
 
 input[type="email"],
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type="number"],
+textarea,
+select {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;

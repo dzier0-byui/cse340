@@ -50,10 +50,11 @@ invCont.buildNewClassification = async function (req, res, next) {
 }
 
 invCont.addClassification = async function (req, res) {
-  let nav = await utilities.getNav()
   const { classification_name } = req.body 
 
   const addResult = await invModel.addClassification(classification_name)
+
+  let nav = await utilities.getNav()
 
   if (addResult){
     req.flash(
@@ -70,6 +71,59 @@ invCont.addClassification = async function (req, res) {
       title: "Add New Classification",
       nav,
       errors: null
+    })
+  }
+}
+
+invCont.buildNewVehicle = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const dropdown = await utilities.buildClassificationList()
+  res.render("./inventory/add-vehicle", {
+    title: "Add New Vehicle",
+    nav,
+    errors: null,
+    dropdown,
+    inv_make: "",
+    inv_model: "",
+    inv_description: "",
+    inv_price: null,
+    inv_year: null,
+    inv_miles: null,
+    inv_color: ""
+  })
+}
+
+invCont.addVehicle = async function (req, res) {
+  const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id } = req.body 
+
+  const addResult = await invModel.addVehicle(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id)
+
+  let nav = await utilities.getNav()
+  const dropdown = await utilities.buildClassificationList()
+
+  if (addResult){
+    req.flash(
+      "notice",
+      `Congratulations, you added ${inv_year} ${inv_make} ${inv_model}.`
+    )
+    res.status(201).render("./inventory/management", {
+      title: "Vehicle Management",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, adding vehicle failed.")
+    req.status(501).render("./inventory/add-vehicle", {
+      title: "Add New Vehicle",
+      nav,
+      errors: null,
+      dropdown,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color
     })
   }
 }
