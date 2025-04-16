@@ -11,6 +11,9 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 //registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
+//account view
+router.get("/", utilities.handleErrors(accountController.buildAccount))
+
 // Process the registration data
 router.post(
     "/register",
@@ -18,5 +21,13 @@ router.post(
     regValidate.checkRegData,
     utilities.handleErrors(accountController.registerAccount)
   )
+
+// Process the login request
+router.post(
+  "/login",
+  //regValidate.loginRules(),
+  //regValidate.checkLoginData,
+  accountController.accountLogin
+)
   
 module.exports = router;
