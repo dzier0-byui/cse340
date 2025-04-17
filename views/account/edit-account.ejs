@@ -1,0 +1,71 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else {
+      res.redirect('/')
+} %>
+
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <% if (error.msg != "Invalid value") { %>
+            <li><%= error.msg %></li>
+        <% } %>
+    <%  }) %>
+    </ul>
+<% } %>
+
+<form id="updateAccountForm" action="/account/edit" method="post">
+
+    <div class="form-group">
+        <label for="firstNameInput">First Name</label>
+        <input type="text" id="firstNameInput" class="input-field" name="account_firstname" value="<%= account_firstname || '' %>" required />
+    </div>
+
+    <div class="form-group">
+        <label for="lastNameInput">Last Name</label>
+        <input type="text" id="lastNameInput" class="input-field" name="account_lastname" value="<%= account_lastname || '' %>" required />
+    </div>
+
+    <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input type="email" id="emailInput" class="input-field" name="account_email" value="<%= account_email || '' %>" placeholder="Enter a valid email address" required />
+    </div>
+
+    <button type="submit" id="updateButton" class="btn-add">Update</button>
+
+    <input type="hidden" name="account_id"
+    <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+    <% } %>>
+</form>
+
+<form id="updatePasswordForm" action="/account/update-password" method="post">
+
+    <div class="text-info">
+        <h2><em>Update Password</em></h2>
+    </div>
+
+    <div class="text-info">
+        <p>*note your original password will be changed</p>
+    </div>
+
+    <div class="form-group">
+        <label for="passwordInput">Password</label>
+        <input type="password" id="passwordInput" class="input-field" name="account_password" required 
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"/>
+    </div>
+
+    <p id="pswrdBtn">Show Password</p>
+
+    <div class="text-info">
+        <em>Passwords must be a minimum of 12 characters, include 1 capital letter, 1 number, and 1 special character.</em>
+    </div>
+
+    <button type="submit" id="changePasswordButton" class="btn-add">Change Password</button>
+
+    <input type="hidden" name="account_id"
+    <% if(account_id) { %> value="<%= account_id %>"
+    <% } %>>
+    <input type="hidden" name="account_firstname" value="<%= account_firstname %>">
+    <input type="hidden" name="account_lastname" value="<%= account_lastname %>">
+    <input type="hidden" name="account_email" value="<%= account_email %>">
+</form>

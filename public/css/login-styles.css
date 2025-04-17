@@ -1,4 +1,4 @@
-#loginForm, #registerForm, #classificationForm, #vehicleForm {
+#loginForm, #registerForm, #classificationForm, #vehicleForm, #updateAccountForm, #updatePasswordForm {
     width: 350px;
     margin: 100px auto;
     padding: 20px;
@@ -38,7 +38,7 @@ select {
     box-sizing: border-box;
 }
 
-#loginButton, #registerButton, #addButton {
+#loginButton, #registerButton, #addButton, #updateButton, #changePasswordButton {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -49,7 +49,7 @@ select {
     border-radius: 4px;
 }
 
-#loginButton:hover, #registerButton:hover, #addButton:hover {
+#loginButton:hover, #registerButton:hover, #addButton:hover, #updateButton:hover, #changePasswordButton:hover {
     background-color: #0056b3;
 }
 
