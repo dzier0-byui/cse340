@@ -65,7 +65,7 @@ Util.buildClassificationGrid = async function(data){
 /* **************************************
 * Build the inventory item view
 * ************************************ */
-Util.buildInventoryItemGrid = async function(data) {
+Util.buildInventoryItemGrid = async function(data, reviews, loggedIn) {
   let grid = ""
   if (data.length > 0) {
     const vehicle = data[0] // Assuming only one vehicle for detail view
@@ -83,6 +83,23 @@ Util.buildInventoryItemGrid = async function(data) {
         </div>
       </div>
     `
+
+    grid += `
+      <div class="review-section">
+        <div class="review-header">
+          <h3>Car Reviews</h3>
+          ${
+            loggedIn
+              ? `<p><a href="/review/add-review/${vehicle.inv_id}">Add Review</a></p>`
+              : `<p><a href="/account/login">Log in to add a review</a></p>`
+          }
+        </div>
+        ${reviews.length > 0 ? `
+          <ul class="review-list">
+            ${reviews.map(r => `<li><strong>${r.account_firstname}:</strong> ${r.review_text}</li>`).join("")}
+          </ul>
+        ` : `<p>No reviews yet.`}
+      </div>`
   } else {
     grid += '<p class="notice">Sorry, the vehicle could not be found.</p>'
   }

@@ -17,6 +17,7 @@ const baseController = require("./controllers/baseController")
 const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
+const reviewRoute = require("./routes/reviewRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
@@ -66,6 +67,10 @@ app.use("/inv", utilities.handleErrors(inventoryRoute))
 app.use("/error", utilities.handleErrors(errorRoute))
 
 app.use("/account", utilities.handleErrors(accountRoute))
+
+app.use("/review", utilities.handleErrors(reviewRoute))
+
+
 
 //Index route
 // app.get("/", function(req, res){
