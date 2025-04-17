@@ -22,6 +22,8 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 
 router.get("/edit/:itemId", utilities.handleErrors(invController.editInventoryView))
 
+router.get("/delete/:itemId", utilities.handleErrors(invController.buildDeleteView))
+
 router.post(
     "/classification",
     classificationValidate.checkClassificationData,
@@ -41,6 +43,11 @@ router.post(
   vehicleValidate.checkUpdateData,
   utilities.handleErrors(invController.updateVehicle)
 
+)
+
+router.post(
+  "/delete",
+  utilities.handleErrors(invController.deleteVehicle)
 )
 
 module.exports = router;
